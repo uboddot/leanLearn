@@ -1,4 +1,4 @@
-name: simple check that echos "hello"
+name: build and push frontend image
 
 on: push
 
@@ -18,7 +18,7 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.repository_owner }}/my-image:latest ./frontend
+        run: docker build -t ghcr.io/${{ github.repository_owner }}/frontend_lean_learn:latest ./frontend
 
       - name: Push Docker image
-        run: docker push ghcr.io/${{ github.repository_owner }}/my-image:latest
+        run: docker push ghcr.io/${{ github.repository_owner }}/frontend_lean_learn:latest
