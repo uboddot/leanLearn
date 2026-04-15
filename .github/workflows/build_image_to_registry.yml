@@ -1,0 +1,10 @@
+name: simple check that echos "hello"
+
+on: push
+
+jobs:
+  echo-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Hello
+        run: echo "hello"
