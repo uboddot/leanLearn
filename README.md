@@ -8,7 +8,7 @@ An app to learn
 
 [This](.github/workflows/build_image_to_registry.yml) GitHub Actions workflow builds the Docker image of the frontend (nginx) and pushes it to ghcr. Railway gets notified (not specified in the pipeline, but in Railway) and starts a new container from the newly pushed image.
 
-### start locally dirctly calling vite
+### start locally directly calling vite
 
 inside ./frontend call
 
