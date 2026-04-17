@@ -2,9 +2,8 @@ import AnjaHello from './AnjaHello'
 import './App.css'
 
 function App() {
-
   return (
-      <AnjaHello />
+    <AnjaHello />
   )
 }
 
