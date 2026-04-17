@@ -18,7 +18,9 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.repository_owner }}/frontend_lean_learn:latest ./frontend
+        run: docker build -t ghcr.io/${{ github.repository_owner }}/frontend_lean_learn:latest -t ghcr.io/${{ github.repository_owner }}/frontend_lean_learn:${{ github.sha }} ./frontend
 
       - name: Push Docker image
-        run: docker push ghcr.io/${{ github.repository_owner }}/frontend_lean_learn:latest
+        run: |
+          docker push ghcr.io/${{ github.repository_owner }}/frontend_lean_learn:latest
+          docker push ghcr.io/${{ github.repository_owner }}/frontend_lean_learn:${{ github.sha }}
