@@ -10,9 +10,11 @@ An app to learn
 
 ### start locally directly calling vite
 
-inside ./frontend call
+Make sure Node.js and npm are installed, then in `./frontend` install dependencies before starting the dev server:
 
 ```bash
+cd ./frontend
+npm install
 npm run dev
 ```
 
