@@ -4,6 +4,10 @@ An app to learn
 
 # frontend
 
+### Deployment
+
+[This](.github\workflows\build_image_to_registry.yml) Github Actions builds docker iamge of frontend (nginx) and pushes it to ghcr. Railway gets notified (not specified in pipeline, but in railway) and starts new container on newly pushed image.
+
 ### start locally dirctly calling vite
 
 inside ./frontend call
