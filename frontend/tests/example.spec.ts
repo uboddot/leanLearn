@@ -18,7 +18,7 @@ test('get started link', async ({ page }) => {
 });
 
 test('lean learn home page is present', async({ page }) => {
-  await page.goto('http://localhost:5173/'); //http://localhost:5173/
+  await page.goto('http://localhost:5173/');
 
   await expect(page).toHaveTitle(/frontend/);
 });

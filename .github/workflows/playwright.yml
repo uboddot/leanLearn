@@ -31,10 +31,10 @@ jobs:
         run: docker build -t frontend-test ./frontend
 
       - name: Run frontend container
-        run: docker run -d -p 8080:80 --name frontend-app frontend-test
+        run: docker run -d -p 5713:80 --name frontend-app frontend-test
 
       - name: Wait for frontend
-        run: npx wait-on http://localhost:8080
+        run: npx wait-on http://localhost:5713
 
       - name: Install Playwright Browsers
         working-directory: frontend
@@ -42,6 +42,8 @@ jobs:
 
       - name: Run Playwright tests
         working-directory: frontend
+        env:
+          PLAYWRIGHT_TEST_BASE_URL: http://localhost:5713
         run: npx playwright test
 
       - uses: actions/upload-artifact@v4
