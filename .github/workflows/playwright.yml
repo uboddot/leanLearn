@@ -20,16 +20,30 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
+          cache: npm
           cach-dependency-path: frontend/package-lock.json
+
       - name: Install dependencies
         working-directory: frontend
         run: npm ci
+
+      - name: Build frontend Docker image
+        run: docker build -t frontend-test ./frontend
+
+      - name: Run frontend container
+        run: docker run -d -p 8080:80 --name frontend-app frontend-test
+
+      - name: Wait for frontend
+        run: npx wait-on http://localhost:8080
+
       - name: Install Playwright Browsers
         working-directory: frontend
         run: npx playwright install --with-deps
+
       - name: Run Playwright tests
         working-directory: frontend
         run: npx playwright test
+
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:

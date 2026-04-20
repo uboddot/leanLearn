@@ -16,3 +16,9 @@ test('get started link', async ({ page }) => {
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
+
+test('lean learn home page is present', async({ page }) => {
+  await page.goto('http://localhost:5173/'); //http://localhost:5173/
+
+  await expect(page).toHaveTitle(/frontend/);
+});
