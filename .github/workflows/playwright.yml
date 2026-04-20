@@ -14,9 +14,7 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: frontend
+
     steps:
       - name: chnage included?
         run: echo "hiiiii"
@@ -26,10 +24,13 @@ jobs:
           node-version: lts/*
           cach-dependency-path: frontend/package-lock.json
       - name: Install dependencies
+        working-directory: frontend
         run: npm ci
       - name: Install Playwright Browsers
+        working-directory: frontend
         run: npx playwright install --with-deps
       - name: Run Playwright tests
+        working-directory: frontend
         run: npx playwright test
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
