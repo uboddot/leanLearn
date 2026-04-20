@@ -19,7 +19,7 @@ E2e tests with Playwright:
 npx playwright test [secificFile] [--ui]
 ```
 
-Run `bash npx playwright codegen` to generate tests with codegen.
+Run ` npx playwright codegen` to generate tests with codegen.
 
 See [Playwright](https://playwright.dev/docs/intro) for more details.
 
