@@ -15,6 +15,11 @@ concurrency:
   group: playwright-tests
   cancel-in-progress: true
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   test:
     timeout-minutes: 60
@@ -41,7 +46,7 @@ jobs:
         run: docker run -d -p 8080:80 --name frontend-app frontend-test
 
       - name: print logs if docker container is not healthy
-        if: ${{ always() }}
+        if: ${{ failure() }}
         run: docker logs frontend-app
 
       - name: Wait for frontend
@@ -63,3 +68,14 @@ jobs:
           name: playwright-report
           path: frontend/playwright-report/
           retention-days: 30
+
+  deploy-report:
+    needs: test
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy-pages.outputs.page_url }}
+    steps:
+      - name: Deploy to Github Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
