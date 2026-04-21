@@ -1,6 +1,0 @@
-services:
-  frontend:
-    build: ./frontend
-    container_name: lean-learn-frontend-container
-    ports:
-      - "8080:80"

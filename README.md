@@ -41,16 +41,18 @@ npm run dev
 
 #### start in container
 
-in ./frontend:
+with hot reload
 
 ```bash
-docker build -t lean-learn-frontend:latest .
-
-docker run --name lean-learn-frontend-container -d -p 8080:80 lean-learn-frontend:latest
+docker compose -f docker-compose.dev.yml up -d --build
 ```
 
-or by runing service in docker-compose:
+### or start locally directly calling vite
+
+Make sure Node.js and npm are installed, then in `./frontend` install dependencies before starting the dev server:
 
 ```bash
-docker compose -f docker-compose.yml up -d --build
+cd ./frontend
+npm install
+npm run dev
 ```
