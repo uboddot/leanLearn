@@ -16,7 +16,7 @@ An app to learn
 E2e tests with Playwright:
 
 ```bash
-npx playwright test [secificFile] [--ui]
+npx playwright test [specificFile] [--ui]
 ```
 
 Run ` npx playwright codegen` to generate tests with codegen.
