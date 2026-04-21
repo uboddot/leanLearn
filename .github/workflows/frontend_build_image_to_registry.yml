@@ -1,6 +1,11 @@
 name: build and push frontend image
 
-on: push
+on:
+  push:
+    branches:
+      - [main, dev, feature/setupBackend] # remove feature branch after closed
+    paths:
+      - "frontend/**"
 
 jobs:
   build-and-push-frontend-image:
@@ -18,7 +23,7 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.repository_owner }}/frontend_lean_learn:latest -t ghcr.io/${{ github.repository_owner }}/frontend_lean_learn:${{ github.sha }} ./frontend
+        run: docker build -f ./frontend/Dockerfile -t ghcr.io/${{ github.repository_owner }}/frontend_lean_learn:latest -t ghcr.io/${{ github.repository_owner }}/frontend_lean_learn:${{ github.sha }} ./frontend
 
       - name: Push Docker image
         run: |
