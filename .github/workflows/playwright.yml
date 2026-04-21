@@ -72,10 +72,6 @@ jobs:
         if: ${{ always() }}
         with:
           path: frontend/playwright-report/
-          # name: github-pages
-
-      - name: debug report files
-        run: ls -R frontend/playwright-report/
 
   deploy-report:
     needs: test
