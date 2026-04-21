@@ -72,7 +72,7 @@ jobs:
         if: ${{ always() }}
         with:
           path: frontend/playwright-report/
-          name: playwright-traces
+          name: github-pages
 
   deploy-report:
     needs: test
