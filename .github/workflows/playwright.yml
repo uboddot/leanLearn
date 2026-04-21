@@ -79,6 +79,7 @@ jobs:
           path: frontend/playwright-report/
 
   deploy-report:
+    if: github.ref == 'refs/heads/main'
     needs: test
     runs-on: ubuntu-latest
     environment:
