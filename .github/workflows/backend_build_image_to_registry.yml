@@ -6,6 +6,7 @@ on:
     # paths:
     #   - "backend/**"
 
+jobs:
   build-and-push-backend-image:
     on:
       paths:
