@@ -12,7 +12,7 @@ on:
 
 # cancel in progress workflow, when a new one starts
 concurrency:
-  group: playwright-tests
+  group: playwright-tests-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
