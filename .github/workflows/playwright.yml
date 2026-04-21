@@ -61,6 +61,11 @@ jobs:
         env:
           PLAYWRIGHT_TEST_BASE_URL: http://localhost:8080
         run: npx playwright test
+
+      ######################################################################
+      ####################### Artifacts and Reporting ######################
+      ######################################################################
+
       # upload playwright report as artifact
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
