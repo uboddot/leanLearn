@@ -10,19 +10,26 @@ on:
       - "frontend/**"
     branches: [main, dev]
 
+# cancel in progress workflow, when a new one starts
+concurrency:
+  group: playwright-tests
+  cancel-in-progress: true
+
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
     steps:
+      # clone repo in github action runner
       - uses: actions/checkout@v4
+      # setup node in runner with caching
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
-          # cache: npm
+          cache: npm
           cache-dependency-path: frontend/package-lock.json
-
+      # npm clean install with package-lock.json to ensure consistent installs
       - name: Install dependencies
         working-directory: frontend
         run: npm ci
@@ -32,6 +39,10 @@ jobs:
 
       - name: Run frontend container
         run: docker run -d -p 8080:80 --name frontend-app frontend-test
+
+      - name: print logs if docker container is not healthy
+        if: ${{ always() }}
+        run: docker logs frontend-app
 
       - name: Wait for frontend
         run: npx wait-on http://localhost:8080
@@ -45,7 +56,7 @@ jobs:
         env:
           PLAYWRIGHT_TEST_BASE_URL: http://localhost:8080
         run: npx playwright test
-
+      # upload playwright report as artifact
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
