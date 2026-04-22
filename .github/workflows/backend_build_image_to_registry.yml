@@ -8,10 +8,6 @@ on:
 
 jobs:
   build-and-push-backend-image:
-    on:
-      paths:
-        - "backend/**"
-
     runs-on: ubuntu-latest
 
     permissions:
