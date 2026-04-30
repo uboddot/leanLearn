@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: backend
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
