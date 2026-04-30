@@ -3,8 +3,8 @@ name: build and push frontend image
 on:
   push:
     branches: [main, dev, feature/setupBackend] # remove feature branch after closed
-    # paths:
-    #   - "frontend/**"
+    paths:
+      - "frontend/**"
 
 jobs:
   build-and-push-frontend-image:
