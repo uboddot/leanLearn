@@ -7,6 +7,23 @@ on:
     #   - "backend/**"
 
 jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: "25"
+          distribution: "temurin"
+          cache: "maven"
+
+      - name: Run tests
+        run: echo "implement running tests here"
+
   build-and-push-backend-image:
     runs-on: ubuntu-latest
 
@@ -45,7 +62,9 @@ jobs:
 
       - name: Generate openapi.yml
         working-directory: backend
-        run: ./mvnw verify -DskipTests=true
+        run: |
+          chmod +x ./mvnw
+          ./mvnw verify -DskipTests=true
 
       - name: Upload openapi.yml artifact
         uses: actions/upload-artifact@v4
