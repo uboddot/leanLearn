@@ -3,8 +3,8 @@ name: build and push backend image
 on:
   push:
     branches: [main, dev, feature/setupBackend] # remove feature branch after closed
-    # paths:
-    #   - "backend/**"
+    paths:
+      - "backend/**"
 
 jobs:
   run-tests:
@@ -22,7 +22,9 @@ jobs:
           cache: "maven"
 
       - name: Run tests
-        run: echo "implement running tests here"
+        run: |
+          chmod +x ./backend/mvnw
+          ./backend/mvnw verify -DskipTests=false
 
   build-and-push-backend-image:
     runs-on: ubuntu-latest

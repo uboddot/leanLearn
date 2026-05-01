@@ -1,4 +1,4 @@
-package com.leanLearn.backend;
+package com.leanlearn.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
