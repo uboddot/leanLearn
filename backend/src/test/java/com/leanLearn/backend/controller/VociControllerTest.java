@@ -5,7 +5,6 @@ import static org.mockito.Mockito.when;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.resttestclient.autoconfigure.AutoConfigureRestTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -19,8 +18,11 @@ import com.leanlearn.backend.services.VociService;
 @AutoConfigureRestTestClient
 class VociControllerTest {
 
-    @Autowired
     private RestTestClient restClient;
+
+    VociControllerTest(RestTestClient restClient) {
+        this.restClient = restClient;
+    }
 
     @MockitoBean
     private VociService vociService;

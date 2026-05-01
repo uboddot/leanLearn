@@ -1,6 +1,6 @@
 package com.leanlearn.backend.services;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ public class VociServiceTest {
 
     @Test
     void basicServiceTest() {
-        assertTrue(vociService.getAllWords().size() == 2);
+        assertEquals(2, vociService.getAllWords().size());
     }
 
 }
