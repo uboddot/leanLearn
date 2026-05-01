@@ -27,7 +27,7 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>25</java.version>
 		<project.config.dir>${project.basedir}/src/main/config</project.config.dir>
 		<maven-javavadoc.version>3.11.2</maven-javavadoc.version>
 		<maven-jacoco.version>0.8.12</maven-jacoco.version>

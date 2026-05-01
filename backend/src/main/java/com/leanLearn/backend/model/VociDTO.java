@@ -6,13 +6,21 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public class VociDTO {
 
     @Schema(description = "The word in the original language", example = "casa")
-    public String original;
+    private final String original;
 
     @Schema(description = "The translated word", example = "house")
-    public String translation;
+    private final String translation;
 
     public VociDTO(Voci word) {
         this.original = word.getOriginal();
         this.translation = word.getTranslation();
+    }
+
+    public String getOriginal() {
+        return original;
+    }
+
+    public String getTranslation() {
+        return translation;
     }
 }
