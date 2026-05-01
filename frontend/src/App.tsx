@@ -1,10 +1,10 @@
-import AnjaHello from './AnjaHello'
+import CardPage from './pages/CardPage'
 import './App.css'
 
 function App() {
   return (
     <>
-      <AnjaHello />
+      <CardPage />
     </>
   )
 }
