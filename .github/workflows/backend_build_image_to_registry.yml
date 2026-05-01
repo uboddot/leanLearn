@@ -21,11 +21,19 @@ jobs:
           distribution: "temurin"
           cache: "maven"
 
-      - name: Run tests
+      - name: Run tests and generate reports
         working-directory: backend
         run: |
           chmod +x ./mvnw
-          ./mvnw verify -DskipTests=false
+          ./mvnw verify site -DgenerateReports=false -Dsurefire.failIfNoSpecifiedTests=false
+
+      - name: Upload test reports artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-test-reports
+          path: |
+            backend/target/site/**
+          if-no-files-found: error
 
   build-and-push-backend-image:
     needs: run-tests
