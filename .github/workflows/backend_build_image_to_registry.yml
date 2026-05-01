@@ -28,6 +28,7 @@ jobs:
           ./mvnw verify -DskipTests=false
 
   build-and-push-backend-image:
+    needs: run-tests
     runs-on: ubuntu-latest
 
     permissions:
@@ -50,6 +51,7 @@ jobs:
           docker push ghcr.io/${{ github.repository_owner }}/backend_lean_learn:${{ github.sha }}
 
   generate-openapi-spec:
+    needs: build-and-push-backend-image
     runs-on: ubuntu-latest
 
     steps:
