@@ -25,8 +25,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Tag(name = "Voci", description = "Endpoints for managing vocabulary words")
 public class VociController {
 
-    @Autowired
-    VociService vociService;
+    private final VociService vociService;
+
+    public VociController(VociService vociService) {
+        this.vociService = vociService;
+    }
 
     @GetMapping
     @Operation(summary = "Get all words", description = "Returns the full list of vocabulary words", responses = {
