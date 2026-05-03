@@ -14,5 +14,5 @@ const getWords = async () => {
   }
 
   const data = await response.json();
-  console.log("Data from /api/voci:", data);
+  return data;
 }
