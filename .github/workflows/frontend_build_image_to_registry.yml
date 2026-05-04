@@ -5,6 +5,7 @@ on:
     branches: [main, dev, feature/connectFrontendBackendDev] # remove feature branch after closed
     paths:
       - "frontend/**"
+      - ".github/workflows/frontend_build_image_to_registry.yml"
 
 jobs:
   build-and-push-frontend-image:
