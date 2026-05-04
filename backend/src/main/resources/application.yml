@@ -10,4 +10,4 @@ springdoc:
 
 app:
   cors:
-    allowed-origins:
+    allowed-origins: "placehoder" #TODO: need a placeholder because access in config with @Value("${app.cors.allowed-origins}") and it will throw error if not set, need to set in env variable or set to empty string
