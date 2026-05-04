@@ -10,4 +10,11 @@ springdoc:
 
 app:
   cors:
-    allowed-origins: "placehoder" #TODO: need a placeholder because access in config with @Value("${app.cors.allowed-origins}") and it will throw error if not set, need to set in env variable or set to empty string
+    allowed-origins: " " # per default cors is not allowed. Is set such that CorsConfig.java can be instanciated.
+
+# Enable only health actuator endpoint per default
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
