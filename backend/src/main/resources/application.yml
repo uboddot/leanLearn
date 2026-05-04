@@ -7,3 +7,7 @@ springdoc:
     enabled: false
   swagger-ui:
     enabled: false
+
+app:
+  cors:
+    allowed-origins: "https://leanlearnfrontend-production.up.railway.app"
