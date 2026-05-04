@@ -27,7 +27,7 @@ export default function CardPage() {
   return (
     <div style={{ textAlign: 'center', fontSize: '24px', fontWeight: 'bold' }}>
       {loading ? 'Loading...' : error ? error : words.map((item, index) => (
-        <div key={index}>{item.original} - {item.translation}</div>
+        <div key={`${item.original}-${item.translation}-${index}`}>{item.original} - {item.translation}</div>
       ))}
     </div>
   )
