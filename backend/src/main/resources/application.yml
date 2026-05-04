@@ -10,4 +10,4 @@ springdoc:
 
 app:
   cors:
-    allowed-origins: "https://testleanlearnfrontend-production.up.railway.app"
+    allowed-origins:
