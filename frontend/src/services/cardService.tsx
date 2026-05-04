@@ -1,6 +1,8 @@
+import { isVociArray, type Voci } from "../types/Voci";
+
 export { getWords };
 
-const getWords = async () => {
+const getWords: () => Promise<Voci[]> = async () => {
   const response = await fetch("/api/voci");
 
   if (!response.ok) {
@@ -14,5 +16,9 @@ const getWords = async () => {
   }
 
   const data = await response.json();
+  if(!isVociArray(data)) {
+    const bodyPreview = JSON.stringify(data).slice(0, 200);
+    throw new Error(`Response does not match expected format: ${bodyPreview}`);
+  }
   return data;
 }
