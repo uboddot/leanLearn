@@ -10,7 +10,7 @@ springdoc:
 
 app:
   cors:
-    allowed-origins: " " # per default cors is not allowed. Is set such that CorsConfig.java can be instanciated.
+    allowed-origins: "" # per default cors is not allowed. Is set such that CorsConfig.java can be instanciated.
 
 # Enable only health actuator endpoint per default
 management:
