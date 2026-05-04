@@ -2,7 +2,7 @@ name: build and push frontend image
 
 on:
   push:
-    branches: [main, dev, feature/setupBackend] # remove feature branch after closed
+    branches: [main, dev, feature/connectFrontendBackendDev] # remove feature branch after closed
     paths:
       - "frontend/**"
 
