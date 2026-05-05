@@ -2,11 +2,10 @@ name: build and push backend image
 
 on:
   push:
-    branches: [main, dev, feature/setupBackend] # remove feature branch after closed
+    branches: [main, dev]
     paths:
       - "backend/**"
       - ".github/workflows/backend_build_image_to_registry.yml"
-
 jobs:
   run-tests:
     runs-on: ubuntu-latest

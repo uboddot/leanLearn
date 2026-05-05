@@ -3,3 +3,14 @@ springdoc:
     enabled: true
   swagger-ui:
     enabled: true
+
+app:
+  cors:
+    allowed-origins: "http://localhost:*,http://127.0.0.1:*"
+
+# Enable all actuator endpoints for development
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

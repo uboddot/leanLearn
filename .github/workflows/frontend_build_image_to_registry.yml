@@ -2,9 +2,10 @@ name: build and push frontend image
 
 on:
   push:
-    branches: [main, dev, feature/setupBackend] # remove feature branch after closed
+    branches: [main, dev]
     paths:
       - "frontend/**"
+      - ".github/workflows/frontend_build_image_to_registry.yml"
 
 jobs:
   build-and-push-frontend-image:

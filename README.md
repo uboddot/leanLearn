@@ -70,7 +70,7 @@ tbd
 
 ### Deployment
 
-In [this](.github/workflows/backend_build_image_to_registry.yml) GitHub Actions workflow, the backend image gets built and pushed to ghcr. It is not yet deployed to a server.
+In [this](.github/workflows/frontend_build_image_to_registry.yml) gitub action the image gets build and pushed to the ghcr. Not yet deployed to a server.
 
 ### Developement
 
