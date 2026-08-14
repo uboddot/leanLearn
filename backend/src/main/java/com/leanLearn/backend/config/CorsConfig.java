@@ -1,4 +1,4 @@
-package com.leanlearn.backend.config;
+package com.leanLearn.backend.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

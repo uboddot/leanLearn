@@ -1,4 +1,4 @@
-package com.leanlearn.backend.services;
+package com.leanLearn.backend.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

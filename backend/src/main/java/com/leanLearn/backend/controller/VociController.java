@@ -1,10 +1,10 @@
-package com.leanlearn.backend.controller;
+package com.leanLearn.backend.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.leanlearn.backend.model.VociDTO;
-import com.leanlearn.backend.services.VociService;
+import com.leanLearn.backend.services.VociService;
+import com.leanLearn.backend.model.VociDTO;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;

@@ -1,4 +1,4 @@
-package com.leanlearn.backend.model;
+package com.leanLearn.backend.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

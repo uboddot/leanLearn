@@ -1,4 +1,4 @@
-package com.leanlearn.backend.controller;
+package com.leanLearn.backend.controller;
 
 import org.junit.jupiter.api.Test;
 

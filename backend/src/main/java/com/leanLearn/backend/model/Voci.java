@@ -1,4 +1,4 @@
-package com.leanlearn.backend.model;
+package com.leanLearn.backend.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

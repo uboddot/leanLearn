@@ -1,11 +1,11 @@
-package com.leanlearn.backend.services;
+package com.leanLearn.backend.services;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.leanlearn.backend.model.Voci;
+import com.leanLearn.backend.model.Voci;
 
 @Service
 public class VociService {
