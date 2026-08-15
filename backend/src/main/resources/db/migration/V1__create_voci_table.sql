@@ -1,0 +1,5 @@
+CREATE TABLE voci (
+    id BIGSERIAL PRIMARY KEY,
+    original VARCHAR(255) NOT NULL,
+    translation VARCHAR(255) NOT NULL
+);

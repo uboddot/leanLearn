@@ -1,19 +1,22 @@
 package com.leanLearn.backend.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.leanLearn.backend.model.Voci;
+import com.leanLearn.backend.repository.VociRepository;
 
 @Service
 public class VociService {
-    public List<Voci> getAllWords() {
-        List<Voci> voci = new ArrayList<>();
-        voci.add(new Voci("danke", "kiitos"));
-        voci.add(new Voci("ich", "minä"));
 
-        return voci;
+    private final VociRepository vociRepository;
+
+    public VociService(VociRepository vociRepository) {
+        this.vociRepository = vociRepository;
+    }
+
+    public List<Voci> getAllWords() {
+        return vociRepository.findAll();
     }
 }

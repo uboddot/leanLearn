@@ -4,6 +4,16 @@ springdoc:
   swagger-ui:
     enabled: true
 
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/leanlearn}
+    username: ${SPRING_DATASOURCE_USERNAME:leanlearn}
+    password: ${SPRING_DATASOURCE_PASSWORD:leanlearn}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
 app:
   cors:
     allowed-origins: "http://localhost:*,http://127.0.0.1:*"

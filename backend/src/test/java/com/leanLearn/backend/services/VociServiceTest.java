@@ -1,23 +1,30 @@
 package com.leanLearn.backend.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestConstructor;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@SpringBootTest
-@TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
-public class VociServiceTest {
+import com.leanLearn.backend.model.Voci;
+import com.leanLearn.backend.repository.VociRepository;
 
-    private final VociService vociService;
+@ExtendWith(MockitoExtension.class)
+class VociServiceTest {
 
-    VociServiceTest(VociService vociService) {
-        this.vociService = vociService;
-    }
+    @Mock
+    private VociRepository vociRepository;
 
     @Test
     void basicServiceTest() {
+        when(vociRepository.findAll()).thenReturn(List.of(new Voci("danke", "kiitos"), new Voci("ich", "minä")));
+
+        VociService vociService = new VociService(vociRepository);
+
         assertEquals(2, vociService.getAllWords().size());
     }
 
