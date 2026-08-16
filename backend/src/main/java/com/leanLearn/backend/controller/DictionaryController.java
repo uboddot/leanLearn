@@ -10,7 +10,6 @@ import java.net.http.HttpResponse;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/dictionary")
@@ -24,12 +23,15 @@ public class DictionaryController {
      * @throws IOException
      */
     @GetMapping
-    String getTranslationForFI(String word) throws IOException, InterruptedException {
+    String getTranslationForEN(String word) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://api.wiktapi.dev/v1/de/word/" + word + "/translations"))
+                .uri(URI.create("https://freedictionaryapi.com/api/v1/entries/en/" + word))
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+
+        // response.body().stream().forEach(System.out::println);
+
         System.out.println(response.body());
         return response.body();
     }
