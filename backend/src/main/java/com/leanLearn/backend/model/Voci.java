@@ -17,14 +17,24 @@ import lombok.Setter;
 public class Voci {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
     private String original;
+    private String originalLanguage;
     private String translation;
+    private String translationLanguage;
+
+    public Voci(String original, String originalLanguage, String translation, String translationLanguage) {
+        this.original = original;
+        this.originalLanguage = originalLanguage;
+        this.translation = translation;
+        this.translationLanguage = translationLanguage;
+    }
 
     public Voci(String original, String translation) {
         this.original = original;
         this.translation = translation;
     }
+
 }

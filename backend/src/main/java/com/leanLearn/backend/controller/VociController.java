@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -51,7 +52,7 @@ public class VociController {
             @ApiResponse(responseCode = "200", description = "Successfully added the word", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Long.class))),
             @ApiResponse(responseCode = "400", description = "Invalid input data")
     })
-    public Long addWord(@RequestBody VociRequest entity) {
+    public String addWord(@Valid @RequestBody VociRequest entity) {
         Voci savedVoci = vociService.addWord(entity);
         return savedVoci.getId();
     }

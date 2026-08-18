@@ -8,12 +8,20 @@ public class VociDTO {
     @Schema(description = "The word in the original language", example = "casa")
     private final String original;
 
+    @Schema(description = "The language of the original word", example = "es")
+    private final String originalLanguage;
+
     @Schema(description = "The translated word", example = "house")
     private final String translation;
+
+    @Schema(description = "The language of the translated word", example = "en")
+    private final String translationLanguage;
 
     public VociDTO(Voci voci) {
         this.original = voci.getOriginal();
         this.translation = voci.getTranslation();
+        this.originalLanguage = voci.getOriginalLanguage() != null ? voci.getOriginalLanguage() : null;
+        this.translationLanguage = voci.getTranslationLanguage() != null ? voci.getTranslationLanguage() : null;
     }
 
     public String getOriginal() {
@@ -22,5 +30,13 @@ public class VociDTO {
 
     public String getTranslation() {
         return translation;
+    }
+
+    public String getOriginalLanguage() {
+        return originalLanguage;
+    }
+
+    public String getTranslationLanguage() {
+        return translationLanguage;
     }
 }
