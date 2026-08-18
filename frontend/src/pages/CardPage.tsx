@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getWords } from "../services/cardService";
 import type { Voci } from "../types/Voci";
+import { VociCard } from "../components/VociCard";
+import { Stack } from "../components/Stack";
 
 export default function CardPage() {
 
@@ -25,10 +27,10 @@ export default function CardPage() {
   }, []);
   
   return (
-    <div style={{ textAlign: 'center', fontSize: '24px', fontWeight: 'bold' }}>
-      {loading ? 'Loading...' : error ? error : words.map((item, index) => (
-        <div key={`${item.original}-${item.translation}-${index}`}>{item.original} - {item.translation}</div>
+    <Stack>
+      {loading ? 'Loading...' : error ? error : words.map((voci, index) => (
+        <VociCard key={`${index}`} item={voci} />
       ))}
-    </div>
+    </Stack>
   )
 }

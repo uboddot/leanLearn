@@ -3,7 +3,9 @@ export { isVociArray };
 
 type Voci = {
     original: string;
+    originalLanguage: string;
     translation: string;
+    translationLanguage: string;
 }
 
 function isVociArray(data: unknown): data is Voci[] {
