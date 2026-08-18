@@ -11,9 +11,9 @@ public class VociDTO {
     @Schema(description = "The translated word", example = "house")
     private final String translation;
 
-    public VociDTO(Voci word) {
-        this.original = word.getOriginal();
-        this.translation = word.getTranslation();
+    public VociDTO(Voci voci) {
+        this.original = voci.getOriginal();
+        this.translation = voci.getTranslation();
     }
 
     public String getOriginal() {

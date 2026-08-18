@@ -4,7 +4,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leanLearn.backend.services.VociService;
+import com.leanLearn.backend.model.Voci;
 import com.leanLearn.backend.model.VociDTO;
+import com.leanLearn.backend.model.VociRequest;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -18,6 +20,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @RestController
 @RequestMapping("api/voci")
@@ -42,4 +46,13 @@ public class VociController {
         return ResponseEntity.ok(vociList);
     }
 
+    @PostMapping
+    @Operation(summary = "Add a new word", description = "Adds a new vocabulary word to the list", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully added the word", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Long.class))),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    })
+    public Long addWord(@RequestBody VociRequest entity) {
+        Voci savedVoci = vociService.addWord(entity);
+        return savedVoci.getId();
+    }
 }
