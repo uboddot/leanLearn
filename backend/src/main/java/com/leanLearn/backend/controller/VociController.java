@@ -41,7 +41,7 @@ public class VociController {
     })
     public ResponseEntity<List<VociDTO>> getAllWords() {
 
-        List<VociDTO> vociList = vociService.getAllWords().stream().map(voci -> new VociDTO(voci))
+        List<VociDTO> vociList = vociService.getAllWords().stream().map(voci -> new VociDTO(voci, vociService))
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(vociList);
