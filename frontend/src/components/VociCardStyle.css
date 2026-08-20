@@ -1,6 +1,6 @@
 .vociCard {
-  width: 14rem;
-  height: 10rem;
+  width: var(--card-width, 14rem);
+  height: var(--card-height, 10rem);
   background-color: #56c03c;
   display: flex;
   justify-content: center;
@@ -12,7 +12,7 @@
 
 @media (min-width: 768px) {
   .vociCard {
-    width: 20rem;
-    height: 12rem;
+    width: var(--card-width, 20rem);
+    height: var(--card-height, 12rem);
   }
 }

@@ -1,5 +1,10 @@
 .stack {
+  --card-width: 14rem;
+  --card-height: 10rem;
+
   position: relative;
+  width: var(--card-width);
+  height: var(--card-height);
 }
 
 .stack > * {
@@ -18,4 +23,11 @@
 .stack > *:nth-child(3) {
   transform: translateY(4rem) translateX(-2rem);
   z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .stack {
+    --card-width: 20rem;
+    --card-height: 12rem;
+  }
 }

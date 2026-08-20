@@ -1,36 +1,61 @@
 import { useEffect, useState } from "react";
-import { getWords } from "../services/cardService";
+import { getWords, getKastenLevels } from "../services/cardService";
 import type { Voci } from "../types/Voci";
 import { VociCard } from "../components/VociCard";
 import { Stack } from "../components/Stack";
+import Kasten from "../components/Kasten";
+import './CardPageStyle.css';
 
 export default function CardPage() {
 
   const [words, setWords] = useState<Voci[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [errorVoci, setErrorVoci] = useState<string | null>(null);
+  const [loadingVoci, setLoadingVoci] = useState<boolean>(true);
+  
+  const [kastenLevels, setKastenLevels] = useState<number[]>([]);
+  const [errorKastenLevels, setErrorKastenLevels] = useState<string | null>(null);
+  const [loadingKastenLevels, setLoadingKastenLevels] = useState<boolean>(true);
 
   useEffect(() => {
     async function fetchWords() {
       try {
-        setLoading(true);
-        setError(null);
+        setLoadingVoci(true);
+        setErrorVoci(null);
         const response = await getWords();
         setWords(response);
       } catch {
-        setError("Failed to fetch words");
+        setErrorVoci("Failed to fetch words");
       } finally {
-        setLoading(false);
+        setLoadingVoci(false);
       }
     }
     fetchWords();
   }, []);
+
+  useEffect(() => {
+    async function fetchKastenLevels() {
+      try {
+        setLoadingKastenLevels(true);
+        setErrorKastenLevels(null);
+        const response = await getKastenLevels();
+        setKastenLevels(response);
+      } catch {
+        setErrorKastenLevels("Failed to fetch kasten levels");
+      } finally {
+        setLoadingKastenLevels(false);
+      }
+    }
+    fetchKastenLevels();
+  }, []);
   
   return (
-    <Stack>
-      {loading ? 'Loading...' : error ? error : words.map((voci, index) => (
-        <VociCard key={`${index}`} item={voci} />
-      ))}
-    </Stack>
+    <div className="card-page">
+      <Stack>
+        {loadingVoci ? 'Loading...' : errorVoci ? errorVoci : words.map((voci, index) => (
+          <VociCard key={`${index}`} item={voci} />
+        ))}
+      </Stack>
+      <Kasten>{loadingKastenLevels ? 'Loading...' : errorKastenLevels ? errorKastenLevels : kastenLevels.join(', ')}</Kasten>
+    </div>
   )
 }
