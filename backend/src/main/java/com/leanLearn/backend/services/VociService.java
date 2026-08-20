@@ -29,6 +29,8 @@ public class VociService {
         Voci voci = new Voci();
         voci.setOriginal(entity.original());
         voci.setTranslation(entity.translation());
+        voci.setOriginalLanguage(entity.originalLanguage());
+        voci.setTranslationLanguage(entity.translationLanguage());
         Voci savedVoci = vociRepository.save(voci);
         return savedVoci;
     }
