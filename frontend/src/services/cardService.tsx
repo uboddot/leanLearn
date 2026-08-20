@@ -40,7 +40,11 @@ const getKasten: () => Promise<KastenLevel[]> = async () => {
   return await response.json();
 }
 
+/**
+ * Fetches the kasten levels sorted in descending order.
+ * @returns Promise<number[]>
+ */
 const getKastenLevels: () => Promise<number[]> = async () => {
   const kasten = await getKasten();
-  return kasten.map(item => item.level);
+  return kasten.map(item => item.level).sort((a, b) => b - a);
 }

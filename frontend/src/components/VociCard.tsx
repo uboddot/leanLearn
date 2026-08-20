@@ -9,7 +9,8 @@ export function VociCard({item: voci }: {item: Voci}) {
 
     return (
         <div className="vociCard"
-        onClick={() => toggleShowingOriginal()}>
+        onClick={(e) => { e.stopPropagation(); toggleShowingOriginal(); }}
+        >
             {showingOriginal ? (
                 <>
                     <VociCardSide props={{word: voci.original, language: voci.originalLanguage}} />

@@ -4,6 +4,7 @@ import type { Voci } from "../types/Voci";
 import { VociCard } from "../components/VociCard";
 import { Stack } from "../components/Stack";
 import Kasten from "../components/Kasten";
+import KastenLaatikko from "../components/KastenLaatikko";
 import './CardPageStyle.css';
 
 export default function CardPage() {
@@ -50,12 +51,17 @@ export default function CardPage() {
   
   return (
     <div className="card-page">
-      <Stack>
-        {loadingVoci ? 'Loading...' : errorVoci ? errorVoci : words.map((voci, index) => (
-          <VociCard key={`${index}`} item={voci} />
+      <Kasten>
+        {loadingKastenLevels ? 'Loading...' : errorKastenLevels ? errorKastenLevels : kastenLevels.map((level, index) => (
+          <KastenLaatikko title={`${level}`} subtitle={`${words.filter(voci => voci.vociKastenLevel === level).length}`} key={`${index}`}>      
+              <Stack>
+                {loadingVoci ? 'Loading...' : errorVoci ? errorVoci : words.filter(voci => voci.vociKastenLevel === level).map((voci, index) => (
+                  <VociCard key={`${index}`} item={voci} />
+                ))}
+              </Stack>
+          </KastenLaatikko>
         ))}
-      </Stack>
-      <Kasten>{loadingKastenLevels ? 'Loading...' : errorKastenLevels ? errorKastenLevels : kastenLevels.join(', ')}</Kasten>
+      </Kasten>
     </div>
   )
 }
