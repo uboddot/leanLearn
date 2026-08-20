@@ -10,4 +10,12 @@ public interface VociKastenRepository extends JpaRepository<VociKasten, String> 
 
     Optional<VociKasten> findByLevel(int i);
 
+    /**
+     * Find the lowest level VociKasten in the database.
+     * 
+     * @return An Optional containing the lowest level VociKasten, or an empty
+     *         Optional if none exist.
+     */
+    Optional<VociKasten> findFirstByOrderByLevelAsc();
+
 }

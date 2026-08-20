@@ -50,4 +50,11 @@ public class VociService {
         });
         vociRepository.save(voci);
     }
+
+    public void resetWord(String id) {
+        Voci voci = vociRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Word not found"));
+        voci.setVociKastenId(vociKastenRepository.findFirstByOrderByLevelAsc()
+                .orElseThrow(() -> new IllegalArgumentException("No VociKasten found")).getId());
+        vociRepository.save(voci);
+    }
 }

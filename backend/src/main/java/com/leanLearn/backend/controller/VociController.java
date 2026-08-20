@@ -65,4 +65,10 @@ public class VociController {
         vociService.bumpWord(id);
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping("/reset/{id}")
+    public ResponseEntity<Void> resetWord(@PathVariable String id) {
+        vociService.resetWord(id);
+        return ResponseEntity.ok().build();
+    }
 }
