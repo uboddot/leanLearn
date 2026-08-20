@@ -39,4 +39,15 @@ public class VociService {
         return voci.getVociKastenId() != null ? vociKastenRepository.findById(voci.getVociKastenId()).orElse(null)
                 : null;
     }
+
+    public void bumpWord(String id) {
+        Voci voci = vociRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Word not found"));
+        int currentKastenLevel = voci.getVociKastenId() != null
+                ? vociKastenRepository.findById(voci.getVociKastenId()).map(VociKasten::getLevel).orElse(0)
+                : 0;
+        vociKastenRepository.findByLevel(currentKastenLevel + 1).ifPresent(nextKasten -> {
+            voci.setVociKastenId(nextKasten.getId());
+        });
+        vociRepository.save(voci);
+    }
 }

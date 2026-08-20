@@ -2,6 +2,7 @@ package com.leanLearn.backend.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.service.annotation.PutExchange;
 
 import com.leanLearn.backend.services.VociService;
 import com.leanLearn.backend.model.Voci;
@@ -21,8 +22,10 @@ import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("api/voci")
@@ -55,5 +58,11 @@ public class VociController {
     public String addWord(@Valid @RequestBody VociRequest entity) {
         Voci savedVoci = vociService.addWord(entity);
         return savedVoci.getId();
+    }
+
+    @PutMapping("/bump/{id}")
+    public ResponseEntity<Void> bumpWord(@PathVariable String id) {
+        vociService.bumpWord(id);
+        return ResponseEntity.ok().build();
     }
 }
