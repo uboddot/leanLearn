@@ -7,6 +7,7 @@ type Voci = {
     translation: string;
     translationLanguage: string;
     vociKastenLevel: number;
+    id: string;
 }
 
 function isVociArray(data: unknown): data is Voci[] {
